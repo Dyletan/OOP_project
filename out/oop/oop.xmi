@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<XMI xmlns:UML="href://org.omg/UML/1.3" xmi.version="1.1">
+    <XMI.header>
+        <XMI.metamodel xmi.name="UML" xmi.version="1.3"/>
+    </XMI.header>
+    <XMI.content>
+        <UML:Model name="PlantUML" xmi.id="model1">
+            <UML:Namespace.ownedElement>
+                <UML:Class name="Employee" namespace="model1" xmi.id="cl0002">
+                    <UML:Classifier.feature>
+                        <UML:Attribute name="employeeID: String" visibility="private" xmi.id="att10"/>
+                        <UML:Attribute name="name: String" visibility="private" xmi.id="att11"/>
+                        <UML:Attribute name="email: String" visibility="private" xmi.id="att12"/>
+                        <UML:Attribute name="position: String" visibility="private" xmi.id="att13"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="ResearchPaper" namespace="model1" xmi.id="cl0003">
+                    <UML:Classifier.feature>
+                        <UML:Attribute name="title: String" visibility="private" xmi.id="att14"/>
+                        <UML:Attribute name="authors: List&lt;String&gt;" visibility="private" xmi.id="att15"/>
+                        <UML:Attribute name="journal: String" visibility="private" xmi.id="att16"/>
+                        <UML:Attribute name="pages: int" visibility="private" xmi.id="att17"/>
+                        <UML:Attribute name="datePublished: Date" visibility="private" xmi.id="att18"/>
+                        <UML:Attribute name="citations: int" visibility="private" xmi.id="att19"/>
+                        <UML:Attribute name="doi: String" visibility="private" xmi.id="att20"/>
+                        <UML:Operation name="getCitation(format: Format): String" visibility="public" xmi.id="att21"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="ResearchProject" namespace="model1" xmi.id="cl0004">
+                    <UML:Classifier.feature>
+                        <UML:Attribute name="topic: String" visibility="private" xmi.id="att22"/>
+                        <UML:Attribute name="publishedPapers: List&lt;ResearchPaper&gt;" visibility="private" xmi.id="att23"/>
+                        <UML:Attribute name="projectParticipants: List&lt;Researcher&gt;" visibility="private" xmi.id="att24"/>
+                        <UML:Operation name="addParticipant(researcher: Researcher): void" visibility="public" xmi.id="att25"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="Format" namespace="model1" xmi.id="cl0005">
+                    <UML:Classifier.feature>
+                        <UML:Attribute name="PLAIN_TEXT" xmi.id="att26"/>
+                        <UML:Attribute name="BIBTEX" xmi.id="att27"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+                <UML:Class name="Researcher" namespace="model1" xmi.id="cl0006">
+                    <UML:Classifier.feature>
+                        <UML:Attribute name="researchPapers: List&lt;ResearchPaper&gt;" visibility="private" xmi.id="att28"/>
+                        <UML:Attribute name="researchProjects: List&lt;ResearchProject&gt;" visibility="private" xmi.id="att29"/>
+                        <UML:Attribute name="hIndex: int" visibility="private" xmi.id="att30"/>
+                        <UML:Operation name="Researcher(employeeID: String, name: String, email: String, position: String)" visibility="public" xmi.id="att31"/>
+                        <UML:Operation name="printPapers(comparator: Comparator&lt;ResearchPaper&gt;): void" visibility="public" xmi.id="att32"/>
+                        <UML:Operation name="calculateHIndex(): int" visibility="public" xmi.id="att33"/>
+                        <UML:Operation name="addResearchPaper(paper: ResearchPaper): void" visibility="public" xmi.id="att34"/>
+                        <UML:Operation name="addResearchProject(project: ResearchProject): void" visibility="public" xmi.id="att35"/>
+                        <UML:Operation name="assignSupervisor(supervisor: Researcher): void" visibility="public" xmi.id="att36"/>
+                        <UML:Operation name="generateTopCitedResearcherNews(): void" visibility="public" xmi.id="att37"/>
+                        <UML:Operation name="getCitation(paper: ResearchPaper, format: Format): String" visibility="public" xmi.id="att38"/>
+                        <UML:Operation name="getResearchPapers(): List&lt;ResearchPaper&gt;" visibility="public" xmi.id="att39"/>
+                        <UML:Operation name="getResearchProjects(): List&lt;ResearchProject&gt;" visibility="public" xmi.id="att40"/>
+                        <UML:Operation name="getHIndex(): int" visibility="public" xmi.id="att41"/>
+                    </UML:Classifier.feature>
+                </UML:Class>
+            </UML:Namespace.ownedElement>
+        </UML:Model>
+    </XMI.content>
+</XMI>
