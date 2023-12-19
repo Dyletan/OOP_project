@@ -1,12 +1,8 @@
-package entities;
+package OOP.Entities;
 
-import java.io.*;
-import java.util.*;
-import containers.Journal;
-import messages.Notification;
-import data.DataBase;
+import java.util.Objects;
 
-public abstract class User implements Serializable, Observer {
+public abstract class User {
     private String userId;
     private Login login;
     private String email;
@@ -15,42 +11,23 @@ public abstract class User implements Serializable, Observer {
     private Vector<Notification> notifications;
     private Vector<Journal> subscribedJournals;
 
-    {
-        subscribedJournals = new Vector<Journal>();
-        notifications = new Vector<Notification>();
-    }
-
     public User() {
     }
 
-    public User(String userId, Login login, String email, String name, String surname) {
+    public User(String userId, Login login, String email, String name, String surname, Vector<Notification> notifications, Vector<Journal> subscribedJournals) {
         this.userId = userId;
         this.login = login;
         this.email = email;
         this.name = name;
         this.surname = surname;
+        this.notifications = notifications;
+        this.subscribedJournals = subscribedJournals;
     }
 
-    public void subscribeToJournal(){
-        // TODO vawe hz poka
-    }
-    public void viewNews(){
-        // TODO vawe hz poka
-    }
-    private void save() throws IOException {
-        DataBase.write();
-    }
-    public void logOut(){
-        System.out.println("Bye bye");
-        try {
-            save();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    public void unsubscribeFromJournal(){
-        // TODO vawe hz poka
-    }
+    public void subscribeToJournal(){}
+    public void viewNews(){}
+    public void logOut(){}
+    public void unsubscribeFromJournal(){}
 
     public String getUserId() {
         return userId;
@@ -134,8 +111,4 @@ public abstract class User implements Serializable, Observer {
                 '}';
     }
 
-    @Override
-    public void notifyNewPaper() {
-        // TO DO
-    }
 }

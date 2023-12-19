@@ -1,11 +1,8 @@
-package data;
+package OOP.Data;
 
-import messages.Comment;
-
-import java.io.Serializable;
 import java.util.*;
 
-public class News implements Serializable {
+public class News {
     private Topic topic;
     private String content;
     private Boolean pinned;

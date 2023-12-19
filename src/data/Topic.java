@@ -1,6 +1,4 @@
-package data;
-
-import java.io.Serializable;
+package OOP.Data;
 
 public enum Topic {
     RESEARCH, EVENT, LESSON_INFO

@@ -1,34 +1,33 @@
-package data;
+package OOP.Data;
 
-import java.io.Serializable;
-import java.util.*;
+import java.util.Objects;
 
-public class ResearcherData implements Serializable {
-    private Vector<ResearchPaper> researchPapers;
-    private Vector<ResearchProject> researchProjects;
+public class ResearcherData {
+    private Vector<ResearcherPaper> researcherPapers;
+    private Vector<ResearcherProject> researcherProjects;
 
     public ResearcherData() {
     }
 
-    public ResearcherData(Vector<ResearchPaper> researchPapers, Vector<ResearchProject> researchProjects) {
-        this.researchPapers = researchPapers;
-        this.researchProjects = researchProjects;
+    public ResearcherData(Vector<ResearcherPaper> researcherPapers, Vector<ResearcherProject> researcherProjects) {
+        this.researcherPapers = researcherPapers;
+        this.researcherProjects = researcherProjects;
     }
 
-    public Vector<ResearchPaper> getResearchPapers() {
-        return researchPapers;
+    public Vector<ResearcherPaper> getResearcherPapers() {
+        return researcherPapers;
     }
 
-    public void setResearchPapers(Vector<ResearchPaper> researchPapers) {
-        this.researchPapers = researchPapers;
+    public void setResearcherPapers(Vector<ResearcherPaper> researcherPapers) {
+        this.researcherPapers = researcherPapers;
     }
 
-    public Vector<ResearchProject> getResearchProjects() {
-        return researchProjects;
+    public Vector<ResearcherProject> getResearcherProjects() {
+        return researcherProjects;
     }
 
-    public void setResearchProjects(Vector<ResearchProject> researchProjects) {
-        this.researchProjects = researchProjects;
+    public void setResearcherProjects(Vector<ResearcherProject> researcherProjects) {
+        this.researcherProjects = researcherProjects;
     }
 
     @Override
@@ -36,19 +35,19 @@ public class ResearcherData implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ResearcherData that = (ResearcherData) o;
-        return Objects.equals(researchPapers, that.researchPapers) && Objects.equals(researchProjects, that.researchProjects);
+        return Objects.equals(researcherPapers, that.researcherPapers) && Objects.equals(researcherProjects, that.researcherProjects);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(researchPapers, researchProjects);
+        return Objects.hash(researcherPapers, researcherProjects);
     }
 
     @Override
     public String toString() {
         return "ResearcherData{" +
-                "researchPapers=" + researchPapers +
-                ", researchProjects=" + researchProjects +
+                "researcherPapers=" + researcherPapers +
+                ", researcherProjects=" + researcherProjects +
                 '}';
     }
 }

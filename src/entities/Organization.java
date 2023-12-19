@@ -1,7 +1,5 @@
-package entities;
+package OOP.Entities;
 
-import java.io.Serializable;
-
-public enum Organization  implements Serializable {
+public enum Organization {
     FACES, OSIT,BSL, ARTHOUSE, GDSC, ENACTUS
 }

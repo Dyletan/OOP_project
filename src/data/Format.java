@@ -1,7 +1,5 @@
-package data;
+package OOP.Data;
 
-import java.io.Serializable;
-
-public enum Format  implements Serializable {
+public enum Format {
     BIBTEX, PLAIN
 }

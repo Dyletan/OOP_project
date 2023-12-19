@@ -1,9 +1,5 @@
-package data;
-
-
-import containers.*;
-import entities.*;
-import messages.*;
+package OOP.Data;
+import OOP.Entities.*;
 
 import java.io.*;
 import java.util.*;
@@ -15,39 +11,28 @@ public class DataBase implements Serializable {
     private LinkedList<News> news;
     private HashMap<String, String> logins;
     private Vector<User> users;
-    private Vector<Journal> journals;
-    private HashMap<Researcher, ResearcherData> dataOfResearchers;
+    private Vector<Journal> jounrals;
+    private HashMap<Researcher, ResearchData> dataOfResearchers;
     private Vector<Cabinet> cabinets;
     private HashMap<Teacher, Complaint> complaints;
+    private Map<Course, Vector<Teacher>> teachersByCourse;
     private Set<Faculty> faculties;
-    private Vector<Course> courses;
+    private Map<Course, Vector<Lesson>> courses;
 
     {
-        logs = new Vector<Log>();
-        news = new LinkedList<News>();
-        logins = new HashMap<String, String>();
-        users = new Vector<User>();
-        journals = new Vector<Journal>();
-        dataOfResearchers = new HashMap<Researcher, ResearcherData>();
-        cabinets = new Vector<Cabinet>();
-        complaints = new HashMap<Teacher, Complaint>();
-        faculties = new HashSet<Faculty>();
-        courses = new Vector<Course>();
+        logs = new Vector<Log>;
+        news = new LinkedList<News>;
+        logins = new HashMap<String, String>;
+        users = new Vector<User>;
+        jounrals = new Vector<Journal>;
+        dataOfResearchers = new HashMap<Researcher, ResearchData>;
+        cabinets = new Vector<Cabinet>;
+        complaints = new HashMap<Teacher, Complaint>;
+        teachersByCourse = new Map<Course, Vector<Teacher>>;
+        faculties = new Set<Faculty>;
     }
     private DataBase(){};
 
-    public DataBase(Vector<Log> logs, LinkedList<News> news, HashMap<String, String> logins, Vector<User> users, Vector<Journal> journals, HashMap<Researcher, ResearcherData> dataOfResearchers, Vector<Cabinet> cabinets, HashMap<Teacher, Complaint> complaints, Map<Course, Vector<Teacher>> teachersByCourse, Set<Faculty> faculties, Vector<Course> courses) {
-        this.logs = logs;
-        this.news = news;
-        this.logins = logins;
-        this.users = users;
-        this.journals = journals;
-        this.dataOfResearchers = dataOfResearchers;
-        this.cabinets = cabinets;
-        this.complaints = complaints;
-        this.faculties = faculties;
-        this.courses = courses;
-    }
 
     public static DataBase getInstance() {
         if(instance == null){
@@ -55,9 +40,9 @@ public class DataBase implements Serializable {
         }
         return instance;
     }
-    public static DataBase getInstance(Vector<Log> logs, LinkedList<News> news, HashMap<String, String> logins, Vector<User> users, Vector<Journal> journals, HashMap<Researcher, ResearcherData> dataOfResearchers, Vector<Cabinet> cabinets, HashMap<Teacher, Complaint> complaints, Map<Course, Vector<Teacher>> teachersByCourse, Set<Faculty> faculties, Vector<Course> courses){
+    public static DataBase getInstance(Vector<Log> logs, LinkedList<News> news, HashMap<String, String> logins, Vector<User> users, Vector<Journal> jounrals, HashMap<Researcher, ResearchData> dataOfResearchers, Vector<Cabinet> cabinets, HashMap<Teacher, Complaint> complaints, Map<Course, Vector<Teacher>> teachersByCourse, Set<Faculty> faculties, Map<Course, Vector<Lesson>> courses){
         if(instance == null){
-            instance = new DataBase(logs, news, logins, users, journals, dataOfResearchers,  cabinets,  complaints, teachersByCourse,  faculties,  courses);
+            instance = new DataBase(logs, news, logins, users, jounrals, dataOfResearchers,  cabinets,  complaints, teachersByCourse,  faculties,  lessons);
         }
         return instance;
     }
@@ -98,19 +83,19 @@ public class DataBase implements Serializable {
         this.users = users;
     }
 
-    public Vector<Journal> getJournals() {
-        return journals;
+    public Vector<Journal> getJounrals() {
+        return jounrals;
     }
 
-    public void setJournals(Vector<Journal> journals) {
-        this.journals = journals;
+    public void setJounrals(Vector<Journal> jounrals) {
+        this.jounrals = jounrals;
     }
 
-    public HashMap<Researcher, ResearcherData> getDataOfResearchers() {
+    public HashMap<Researcher, ResearchData> getDataOfResearchers() {
         return dataOfResearchers;
     }
 
-    public void setDataOfResearchers(HashMap<Researcher, ResearcherData> dataOfResearchers) {
+    public void setDataOfResearchers(HashMap<Researcher, ResearchData> dataOfResearchers) {
         this.dataOfResearchers = dataOfResearchers;
     }
 
@@ -130,6 +115,14 @@ public class DataBase implements Serializable {
         this.complaints = complaints;
     }
 
+    public Map<Course, Vector<Teacher>> getTeachersByCourse() {
+        return teachersByCourse;
+    }
+
+    public void setTeachersByCourse(Map<Course, Vector<Teacher>> teachersByCourse) {
+        this.teachersByCourse = teachersByCourse;
+    }
+
     public Set<Faculty> getFaculties() {
         return faculties;
     }
@@ -138,16 +131,12 @@ public class DataBase implements Serializable {
         this.faculties = faculties;
     }
 
-    public static void setInstance(DataBase instance) {
-        DataBase.instance = instance;
+    public Vector<Lesson> getLessons() {
+        return lessons;
     }
 
-    public Vector<Course> getCourses() {
-        return courses;
-    }
-
-    public void setCourses(Vector<Course> courses) {
-        this.courses = courses;
+    public void setLessons(Vector<Lesson> lessons) {
+        this.lessons = lessons;
     }
 
     public void serialize(String filename) throws IOException {

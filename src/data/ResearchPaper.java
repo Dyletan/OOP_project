@@ -1,13 +1,8 @@
-package data;
+package OOP.Data;
 
-import containers.Journal;
-import entities.Researcher;
-
-import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Vector;
 
-public class ResearchPaper implements Serializable {
+public class ResearchPaper {
     private String title;
     private Vector<Researcher> authors;
     private Journal journal;

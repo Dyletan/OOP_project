@@ -1,8 +1,6 @@
-package data;
+package OOP.Data;
 
-import java.io.Serializable;
-
-public interface System extends Serializable {
+public interface System {
     void loadData();
     void login();
     void displayInfo();

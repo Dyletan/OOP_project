@@ -1,51 +1,43 @@
-package entities;
+package OOP.Entities;
 
-import data.*;
-import messages.*;
-import containers.*;
+import OOP.Data.DataBase;
 
-import java.io.*;
-import java.lang.System;
 import java.util.*;
 
-public class Student extends User implements Serializable, Cloneable {
+public class Student extends User{
     private FacultyName faculty;
     private Vector<Organization> organizations;
     private Schedule schedule;
-    private Vector<Course> doneCourses;
+    private Vector<Courses> doneCourses;
     private Boolean isExpelled;
     private Map<Course, Mark> gradeBook;
     private Set<Transcript> transcripts;
 
-    {
-            organizations = new Vector<Organization>();
-            doneCourses = new Vector<Course>();
-            gradeBook = new HashMap<Course, Mark>();
-            transcripts = new HashSet<>();
-            isExpelled = false;
-    }
-
     public Student() {
     }
 
-    public Student(String userId, Login login, String email, String name, String surname, FacultyName faculty, Schedule schedule) {
-        super(userId, login, email, name, surname);
+    public Student(String userId, Login login, String email, String name, String surname, Vector<Notification> notifications, Vector<Journal> subscribedJournals, Faculty faculty, Vector<Organization> organizations, Schedule schedule, Vector<Courses> doneCourses, Boolean isExpelled, Map<Course, Mark> gradeBook, Set<Transcript> transcripts) {
+        super(userId, login, email, name, surname, notifications, subscribedJournals);
         this.faculty = faculty;
-
+        this.organizations = organizations;
         this.schedule = schedule;
+        this.doneCourses = doneCourses;
+        this.isExpelled = isExpelled;
+        this.gradeBook = gradeBook;
+        this.transcripts = transcripts;
     }
 
-    public void viewTransript(Transcript transcript){
-        System.out.println(transcript);
+    public String viewTransript(Transcript transcript){
+        return transcript.toString();
     }
-    public void viewTeacherInfo(Teacher teacher){
-        System.out.println(teacher);
+    public String viewTeacherInfo(Teacher teacher){
+        return teacher.toString();
     }
     public void joinStudentOrganization(Organization organizaiton){
-        this.organizations.add(organizaiton);
+        this.organizations = this.organizations.add(organizaiton);
     }
-    public void rateTeacher(Teacher teacher, Integer rating){
-        teacher.setRatings(teacher.addRating(this, rating));
+    public void rateTeacher(Teacher teacher, int rating){
+        teacher.setRatings(teacher.getRatings().add(rating));
     }
     public void viewMarks(){
         System.out.println(gradeBook);
@@ -55,11 +47,11 @@ public class Student extends User implements Serializable, Cloneable {
         List<Course> availableCourses =  DataBase.getInstance().
                 getFaculties().
                 stream().
-                filter(n -> n.getName() == faculty).
+                filter(n -> n.name == faculty).
                 getAvailableMajorElectives();
         if(availableCourses.contains(c)){
-            c.getRegisteredStudents().add(this);
-            System.out.println("You are registered to "+ c.getCourseName() + " course.");
+            c.registeredStudents.add(this);
+            System.out.println("You are registered to "+ c.name + " course.");
         }else{
             System.out.println("This course is not meant to be in your schedule.");
         }
@@ -82,11 +74,11 @@ public class Student extends User implements Serializable, Cloneable {
         this.transcripts = transcripts;
     }
 
-    public FacultyName getFaculty() {
+    public Faculty getFaculty() {
         return faculty;
     }
 
-    public void setFaculty(FacultyName faculty) {
+    public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
     }
 
@@ -106,11 +98,11 @@ public class Student extends User implements Serializable, Cloneable {
         this.schedule = schedule;
     }
 
-    public Vector<Course> getDoneCourses() {
+    public Vector<Courses> getDoneCourses() {
         return doneCourses;
     }
 
-    public void setDoneCourses(Vector<Course> doneCourses) {
+    public void setDoneCourses(Vector<Courses> doneCourses) {
         this.doneCourses = doneCourses;
     }
 
@@ -134,34 +126,23 @@ public class Student extends User implements Serializable, Cloneable {
     public boolean equals(Object o) {
         if (!super.equals(o)) return false;
         Student student = (Student) o;
-        return Objects.equals(faculty, student.faculty) && Objects.equals(organizations, student.organizations) && Objects.equals(schedule, student.schedule) && Objects.equals(doneCourses, student.doneCourses) && Objects.equals(isExpelled, student.isExpelled) && Objects.equals(gradeBook, student.gradeBook);
+        return Objects.equals(faculty, student.faculty) && Objects.equals(organization, student.organization) && Objects.equals(schedule, student.schedule) && Objects.equals(doneCourses, student.doneCourses) && Objects.equals(isExpelled, student.isExpelled) && Objects.equals(gradeBook, student.gradeBook);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), faculty, organizations, schedule, doneCourses, isExpelled, gradeBook);
+        return Objects.hash(super.hashCode(), faculty, organization, schedule, doneCourses, isExpelled, gradeBook);
     }
 
     @Override
     public String toString() {
         return "Student{" +
                 "faculty=" + faculty +
-                ", organization=" + organizations +
+                ", organization=" + organization +
                 ", schedule=" + schedule +
                 ", doneCourses=" + doneCourses +
                 ", isExpelled=" + isExpelled +
                 ", gradeBook=" + gradeBook +
                 '}';
-    }
-
-    @Override
-    public Student clone() {
-        try {
-            Student clone = (Student) super.clone();
-            // TODO: copy mutable state here, so the clone can't change the internals of the original
-            return clone;
-        } catch (CloneNotSupportedException e) {
-            throw new AssertionError();
-        }
     }
 }

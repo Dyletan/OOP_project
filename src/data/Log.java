@@ -1,10 +1,9 @@
-package data;
+package OOP.Data;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Log implements Serializable {
+public class Log {
     private Integer userId;
     private String action;
     private LocalDateTime time;
