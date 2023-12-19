@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.Objects;
 
 public class Point {
-    private LocalDate date;
+    private final LocalDate date;
     private double point;
     private PointType type;
     {

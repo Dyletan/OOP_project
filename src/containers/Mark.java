@@ -1,9 +1,25 @@
 package containers;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Vector;
 
 public class Mark {
+    private final Map<Double, String> gpaToAlphabetical = new HashMap<Double, String>() {{
+        put(4.0, "A");
+        put(3.67, "A-");
+        put(3.33, "B+");
+        put(3.0, "B");
+        put(2.67, "B-");
+        put(2.33, "C+");
+        put(2.0, "C");
+        put(1.67, "C-");
+        put(1.33, "D+");
+        put(1.0, "D");
+        put(0.0, "F");
+    }};
+
     private Vector<Point> firstAttestation;
     private Vector<Point> secondAttestation;
     private Point finalExam;
@@ -46,22 +62,44 @@ public class Mark {
         // Calculate GPA based on your grading scale
         // Modify this according to your grading system
         double totalPoints = 0;
-        double totalCredits = 0;
 
         for (Point point : getPoints()) {
-            totalPoints += point.getPoint() * point.getCredits();
-            totalCredits += point.getCredits();
+            totalPoints += point.getPoint();
         }
 
-        return totalCredits != 0 ? totalPoints / totalCredits : 0;
+        double roundedPoints = Math.round(totalPoints);
+
+        if (roundedPoints >= 95) {
+            return 4.0;
+        } else if (roundedPoints >= 90) {
+            return 3.67;
+        } else if (roundedPoints >= 85) {
+            return 3.33;
+        } else if (roundedPoints >= 80) {
+            return 3.0;
+        } else if (roundedPoints >= 75) {
+            return 2.67;
+        } else if (roundedPoints >= 70) {
+            return 2.33;
+        } else if (roundedPoints >= 65) {
+            return 2.0;
+        } else if (roundedPoints >= 60) {
+            return 1.67;
+        } else if (roundedPoints >= 55) {
+            return 1.33;
+        } else if (roundedPoints >= 50) {
+            return 1.0;
+        } else {
+            return 0.0;
+        }
     }
 
 
     /**
      * @return Returns an alphabetical representation of Student's grade
      */
-    public char getGrade(){ // TO DO
-        return 'A';
+    public String getGrade(){ // TO DO
+        return gpaToAlphabetical.get(getGPA());
     }
 
     @Override

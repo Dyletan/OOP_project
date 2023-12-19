@@ -1,5 +1,7 @@
 package containers;
 
+import entities.Teacher;
+
 import java.util.Comparator;
 import java.util.Objects;
 /*
@@ -44,7 +46,13 @@ public class Lesson implements Comparable<Lesson>{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Lesson lesson = (Lesson) o;
-        return Objects.equals(startTime, lesson.startTime) && Objects.equals(endTime, lesson.endTime) && lessonType == lesson.lessonType && Objects.equals(cabinet, lesson.cabinet) && weekDay == lesson.weekDay && Objects.equals(teacher, lesson.teacher) && Objects.equals(course, lesson.course);
+        return Objects.equals(startTime, lesson.startTime)
+                && Objects.equals(endTime, lesson.endTime)
+                && lessonType == lesson.lessonType
+                && Objects.equals(cabinet, lesson.cabinet)
+                && weekDay == lesson.weekDay
+                && Objects.equals(teacher, lesson.teacher)
+                && Objects.equals(course, lesson.course);
     }
 
     @Override

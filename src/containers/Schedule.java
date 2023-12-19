@@ -25,10 +25,7 @@ public class Schedule {
      */
     public void addLesson(Lesson lesson) throws OverlappingLessonException, CourseNotRegisteredException {
         if(!isOverlap(lesson)){
-            if(viableLesson(lesson)){
                 lessons.add(lesson);
-            }
-            else throw new CourseNotRegisteredException("This course isn't in the list of registered courses.");
         }
         else throw new OverlappingLessonException("Lessons overlap. Didn't add");
     }
@@ -52,9 +49,6 @@ public class Schedule {
         return false;
     }
 
-    private boolean viableLesson(Lesson lesson){ // transfer this logic to the caller (Teacher or Student)
-        return true; // TO DO
-    }
     public TreeSet<Lesson> getLessons() {
         return lessons;
     }

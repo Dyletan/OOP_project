@@ -2,8 +2,8 @@ package containers;
 
 import java.util.Objects;
 import java.util.Vector;
-import Entities.Observable;
-import Data.ResearchPaper;
+import entities.Observable;
+import data.ResearchPaper;
 
 public class Journal extends Observable {
     private String name;
